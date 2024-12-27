@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  microservicio-clientes:
+    build:
+      context: ./microservicio-1 # Ruta microservicio de clientes
+    ports:
+      - "8083:8083"
+    restart: always
+    networks:
+      - app-network
+
+  microservicio-cuentas:
+    build:
+      context: ./microservicio-2 # Ruta microservicio de cuentas
+    ports:
+      - "8084:8084"
+    restart: always
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
